@@ -1,0 +1,3 @@
+docker attach custom-nginx-t2
+docker ps -a
+docker start custom-nginx-t2
