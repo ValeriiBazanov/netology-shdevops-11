@@ -1,0 +1,1 @@
+<image src="task1.png" alt="Задача 1">
