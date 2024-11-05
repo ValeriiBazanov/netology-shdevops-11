@@ -1,0 +1,167 @@
+2024-11-04 18:38:22,367 [MainThread  ] [WARNI]  [ArmLocalGraph] created 0 vertices
+2024-11-04 18:38:22,368 [MainThread  ] [WARNI]  [ArmLocalGraph] created 0 edges
+
+       _               _              
+   ___| |__   ___  ___| | _______   __
+  / __| '_ \ / _ \/ __| |/ / _ \ \ / /
+ | (__| | | |  __/ (__|   < (_) \ V / 
+  \___|_| |_|\___|\___|_|\_\___/ \_/  
+                                      
+By Prisma Cloud | version: 3.2.278 
+[0m[0m[0m
+[0m[0m[0m[34mterraform scan results:
+[0m[36m
+Passed checks: 3, Failed checks: 10, Skipped checks: 0
+
+[0m[97mCheck: CKV_YC_4: "Ensure compute instance does not have serial console enabled."
+[0m[32m	PASSED for resource: module.example-vm.yandex_compute_instance.vm[0]
+[0m[35m	File: /.external_modules/github.com/udjin10/yandex_compute_instance/main/main.tf:24-73
+[0m[35m	Calling File: /main.tf:45-61
+[0m[97mCheck: CKV_YC_4: "Ensure compute instance does not have serial console enabled."
+[0m[32m	PASSED for resource: module.test-vm.yandex_compute_instance.vm[0]
+[0m[35m	File: /.external_modules/github.com/udjin10/yandex_compute_instance/main/main.tf:24-73
+[0m[35m	Calling File: /main.tf:22-43
+[0m[97mCheck: CKV_YC_4: "Ensure compute instance does not have serial console enabled."
+[0m[32m	PASSED for resource: module.test-vm.yandex_compute_instance.vm[1]
+[0m[35m	File: /.external_modules/github.com/udjin10/yandex_compute_instance/main/main.tf:24-73
+[0m[35m	Calling File: /main.tf:22-43
+[0m[97mCheck: CKV_YC_2: "Ensure compute instance does not have public IP."
+[0m[31m	FAILED for resource: module.example-vm.yandex_compute_instance.vm[0]
+[0m[35m	File: /.external_modules/github.com/udjin10/yandex_compute_instance/main/main.tf:24-73
+[0m[35m	Calling File: /main.tf:45-61
+[0m
+		[33mCode lines for this resource are too many. Please use IDE of your choice to review the file.
+[97mCheck: CKV_YC_11: "Ensure security group is assigned to network interface."
+[0m[31m	FAILED for resource: module.example-vm.yandex_compute_instance.vm[0]
+[0m[35m	File: /.external_modules/github.com/udjin10/yandex_compute_instance/main/main.tf:24-73
+[0m[35m	Calling File: /main.tf:45-61
+[0m
+		[33mCode lines for this resource are too many. Please use IDE of your choice to review the file.
+[97mCheck: CKV_YC_2: "Ensure compute instance does not have public IP."
+[0m[31m	FAILED for resource: module.test-vm.yandex_compute_instance.vm[0]
+[0m[35m	File: /.external_modules/github.com/udjin10/yandex_compute_instance/main/main.tf:24-73
+[0m[35m	Calling File: /main.tf:22-43
+[0m
+		[33mCode lines for this resource are too many. Please use IDE of your choice to review the file.
+[97mCheck: CKV_YC_11: "Ensure security group is assigned to network interface."
+[0m[31m	FAILED for resource: module.test-vm.yandex_compute_instance.vm[0]
+[0m[35m	File: /.external_modules/github.com/udjin10/yandex_compute_instance/main/main.tf:24-73
+[0m[35m	Calling File: /main.tf:22-43
+[0m
+		[33mCode lines for this resource are too many. Please use IDE of your choice to review the file.
+[97mCheck: CKV_YC_2: "Ensure compute instance does not have public IP."
+[0m[31m	FAILED for resource: module.test-vm.yandex_compute_instance.vm[1]
+[0m[35m	File: /.external_modules/github.com/udjin10/yandex_compute_instance/main/main.tf:24-73
+[0m[35m	Calling File: /main.tf:22-43
+[0m
+		[33mCode lines for this resource are too many. Please use IDE of your choice to review the file.
+[97mCheck: CKV_YC_11: "Ensure security group is assigned to network interface."
+[0m[31m	FAILED for resource: module.test-vm.yandex_compute_instance.vm[1]
+[0m[35m	File: /.external_modules/github.com/udjin10/yandex_compute_instance/main/main.tf:24-73
+[0m[35m	Calling File: /main.tf:22-43
+[0m
+		[33mCode lines for this resource are too many. Please use IDE of your choice to review the file.
+[97mCheck: CKV_TF_1: "Ensure Terraform module sources use a commit hash"
+[0m[31m	FAILED for resource: test-vm
+[0m[35m	File: /main.tf:22-43
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/supply-chain-policies/terraform-policies/ensure-terraform-module-sources-use-git-url-with-commit-hash-revision
+[0m[0m
+		[37m22 | [33mmodule "test-vm" {
+		[37m23 | [33m  source         = "git::https://github.com/udjin10/yandex_compute_instance.git?ref=main"
+		[37m24 | [33m  env_name       = "develop" 
+		[37m25 | [33m  network_id     = yandex_vpc_network.develop.id
+		[37m26 | [33m  subnet_zones   = ["ru-central1-a","ru-central1-b"]
+		[37m27 | [33m  subnet_ids     = [yandex_vpc_subnet.develop_a.id,yandex_vpc_subnet.develop_b.id]
+		[37m28 | [33m  instance_name  = "webs"
+		[37m29 | [33m  instance_count = 2
+		[37m30 | [33m  image_family   = "ubuntu-2004-lts"
+		[37m31 | [33m  public_ip      = true
+		[37m32 | [33m
+		[37m33 | [33m  labels = { 
+		[37m34 | [33m    owner= "i.ivanov",
+		[37m35 | [33m    project = "accounting"
+		[37m36 | [33m     }
+		[37m37 | [33m
+		[37m38 | [33m  metadata = {
+		[37m39 | [33m    user-data          = data.template_file.cloudinit.rendered #Для демонстрации №3
+		[37m40 | [33m    serial-port-enable = 1
+		[37m41 | [33m  }
+		[37m42 | [33m
+		[37m43 | [33m}
+
+[97mCheck: CKV_TF_2: "Ensure Terraform module sources use a tag with a version number"
+[0m[31m	FAILED for resource: test-vm
+[0m[35m	File: /main.tf:22-43
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/supply-chain-policies/terraform-policies/ensure-terraform-module-sources-use-tag
+[0m[0m
+		[37m22 | [33mmodule "test-vm" {
+		[37m23 | [33m  source         = "git::https://github.com/udjin10/yandex_compute_instance.git?ref=main"
+		[37m24 | [33m  env_name       = "develop" 
+		[37m25 | [33m  network_id     = yandex_vpc_network.develop.id
+		[37m26 | [33m  subnet_zones   = ["ru-central1-a","ru-central1-b"]
+		[37m27 | [33m  subnet_ids     = [yandex_vpc_subnet.develop_a.id,yandex_vpc_subnet.develop_b.id]
+		[37m28 | [33m  instance_name  = "webs"
+		[37m29 | [33m  instance_count = 2
+		[37m30 | [33m  image_family   = "ubuntu-2004-lts"
+		[37m31 | [33m  public_ip      = true
+		[37m32 | [33m
+		[37m33 | [33m  labels = { 
+		[37m34 | [33m    owner= "i.ivanov",
+		[37m35 | [33m    project = "accounting"
+		[37m36 | [33m     }
+		[37m37 | [33m
+		[37m38 | [33m  metadata = {
+		[37m39 | [33m    user-data          = data.template_file.cloudinit.rendered #Для демонстрации №3
+		[37m40 | [33m    serial-port-enable = 1
+		[37m41 | [33m  }
+		[37m42 | [33m
+		[37m43 | [33m}
+
+[97mCheck: CKV_TF_1: "Ensure Terraform module sources use a commit hash"
+[0m[31m	FAILED for resource: example-vm
+[0m[35m	File: /main.tf:45-61
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/supply-chain-policies/terraform-policies/ensure-terraform-module-sources-use-git-url-with-commit-hash-revision
+[0m[0m
+		[37m45 | [33mmodule "example-vm" {
+		[37m46 | [33m  source         = "git::https://github.com/udjin10/yandex_compute_instance.git?ref=main"
+		[37m47 | [33m  env_name       = "stage"
+		[37m48 | [33m  network_id     = yandex_vpc_network.develop.id
+		[37m49 | [33m  subnet_zones   = ["ru-central1-a"]
+		[37m50 | [33m  subnet_ids     = [yandex_vpc_subnet.develop_a.id]
+		[37m51 | [33m  instance_name  = "web-stage"
+		[37m52 | [33m  instance_count = 1
+		[37m53 | [33m  image_family   = "ubuntu-2004-lts"
+		[37m54 | [33m  public_ip      = true
+		[37m55 | [33m
+		[37m56 | [33m  metadata = {
+		[37m57 | [33m    user-data          = data.template_file.cloudinit.rendered #Для демонстрации №3
+		[37m58 | [33m    serial-port-enable = 1
+		[37m59 | [33m  }
+		[37m60 | [33m
+		[37m61 | [33m}
+
+[97mCheck: CKV_TF_2: "Ensure Terraform module sources use a tag with a version number"
+[0m[31m	FAILED for resource: example-vm
+[0m[35m	File: /main.tf:45-61
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/supply-chain-policies/terraform-policies/ensure-terraform-module-sources-use-tag
+[0m[0m
+		[37m45 | [33mmodule "example-vm" {
+		[37m46 | [33m  source         = "git::https://github.com/udjin10/yandex_compute_instance.git?ref=main"
+		[37m47 | [33m  env_name       = "stage"
+		[37m48 | [33m  network_id     = yandex_vpc_network.develop.id
+		[37m49 | [33m  subnet_zones   = ["ru-central1-a"]
+		[37m50 | [33m  subnet_ids     = [yandex_vpc_subnet.develop_a.id]
+		[37m51 | [33m  instance_name  = "web-stage"
+		[37m52 | [33m  instance_count = 1
+		[37m53 | [33m  image_family   = "ubuntu-2004-lts"
+		[37m54 | [33m  public_ip      = true
+		[37m55 | [33m
+		[37m56 | [33m  metadata = {
+		[37m57 | [33m    user-data          = data.template_file.cloudinit.rendered #Для демонстрации №3
+		[37m58 | [33m    serial-port-enable = 1
+		[37m59 | [33m  }
+		[37m60 | [33m
+		[37m61 | [33m}
+
+[0m[0m[0m
+[0m[0m[0m[0m[0m
