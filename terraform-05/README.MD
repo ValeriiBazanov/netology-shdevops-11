@@ -43,3 +43,13 @@ tfstate в бакете
 Блокировка в БД
 
 <image src="task-02-8.png">
+
+Блокировка
+
+<image src="task-02-9.png">
+
+<image src="task-02-10.png">
+
+<image src="task-02-11.png">
+
+<image src="task-02-12.png">
