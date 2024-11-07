@@ -1,0 +1,45 @@
+t1@t1-MEGABOOK-T1:~/learning/netology-shdevops-11/terraform-05/src$ tflint ${pwd}
+WARNING: "module" attribute in /home/t1/.tflint.hcl is deprecated. Use "call_module_type" instead.
+6 issue(s) found:
+
+Warning: Module source "git::https://github.com/udjin10/yandex_compute_instance.git?ref=main" uses a default branch as ref (main) (terraform_module_pinned_source)
+
+  on main.tf line 9:
+   9:   source         = "git::https://github.com/udjin10/yandex_compute_instance.git?ref=main"
+
+Reference: https://github.com/terraform-linters/tflint-ruleset-terraform/blob/v0.9.1/docs/rules/terraform_module_pinned_source.md
+
+Warning: Module source "git::https://github.com/udjin10/yandex_compute_instance.git?ref=main" uses a default branch as ref (main) (terraform_module_pinned_source)
+
+  on main.tf line 32:
+  32:   source         = "git::https://github.com/udjin10/yandex_compute_instance.git?ref=main"
+
+Reference: https://github.com/terraform-linters/tflint-ruleset-terraform/blob/v0.9.1/docs/rules/terraform_module_pinned_source.md
+
+Warning: Missing version constraint for provider "template" in `required_providers` (terraform_required_providers)
+
+  on main.tf line 54:
+  54: data "template_file" "cloudinit" {
+
+Reference: https://github.com/terraform-linters/tflint-ruleset-terraform/blob/v0.9.1/docs/rules/terraform_required_providers.md
+
+Warning: [Fixable] variable "vms_ssh_root_key" is declared but not used (terraform_unused_declarations)
+
+  on variables.tf line 36:
+  36: variable "vms_ssh_root_key" {
+
+Reference: https://github.com/terraform-linters/tflint-ruleset-terraform/blob/v0.9.1/docs/rules/terraform_unused_declarations.md
+
+Warning: [Fixable] variable "vm_web_name" is declared but not used (terraform_unused_declarations)
+
+  on variables.tf line 43:
+  43: variable "vm_web_name" {
+
+Reference: https://github.com/terraform-linters/tflint-ruleset-terraform/blob/v0.9.1/docs/rules/terraform_unused_declarations.md
+
+Warning: [Fixable] variable "vm_db_name" is declared but not used (terraform_unused_declarations)
+
+  on variables.tf line 50:
+  50: variable "vm_db_name" {
+
+Reference: https://github.com/terraform-linters/tflint-ruleset-terraform/blob/v0.9.1/docs/rules/terraform_unused_declarations.md

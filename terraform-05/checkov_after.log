@@ -1,0 +1,64 @@
+2024-11-07 19:20:54,493 [MainThread  ] [WARNI]  [ArmLocalGraph] created 0 vertices
+2024-11-07 19:20:54,494 [MainThread  ] [WARNI]  [ArmLocalGraph] created 0 edges
+
+
+       _               _              
+   ___| |__   ___  ___| | _______   __
+  / __| '_ \ / _ \/ __| |/ / _ \ \ / /
+ | (__| | | |  __/ (__|   < (_) \ V / 
+  \___|_| |_|\___|\___|_|\_\___/ \_/  
+                                      
+By Prisma Cloud | version: 3.2.278 
+Update available [30m3.2.278[0m -> [32m3.2.282[0m
+Run [35mpip3 install -U checkov[0m to update 
+
+[0m[0m[0m
+[0m[0m[0m[34mterraform scan results:
+[0m[36m
+Passed checks: 11, Failed checks: 0, Skipped checks: 0
+
+[0m[97mCheck: CKV_YC_2: "Ensure compute instance does not have public IP."
+[0m[32m	PASSED for resource: module.analystics-vm.yandex_compute_instance.vm[0]
+[0m[35m	File: /.external_modules/github.com/udjin10/yandex_compute_instance/4d05fab828b1fcae16556a4d167134efca2fccf2/main.tf:24-73
+[0m[35m	Calling File: /main.tf:34-58
+[0m[97mCheck: CKV_YC_4: "Ensure compute instance does not have serial console enabled."
+[0m[32m	PASSED for resource: module.analystics-vm.yandex_compute_instance.vm[0]
+[0m[35m	File: /.external_modules/github.com/udjin10/yandex_compute_instance/4d05fab828b1fcae16556a4d167134efca2fccf2/main.tf:24-73
+[0m[35m	Calling File: /main.tf:34-58
+[0m[97mCheck: CKV_YC_11: "Ensure security group is assigned to network interface."
+[0m[32m	PASSED for resource: module.analystics-vm.yandex_compute_instance.vm[0]
+[0m[35m	File: /.external_modules/github.com/udjin10/yandex_compute_instance/4d05fab828b1fcae16556a4d167134efca2fccf2/main.tf:24-73
+[0m[35m	Calling File: /main.tf:34-58
+[0m[97mCheck: CKV_YC_2: "Ensure compute instance does not have public IP."
+[0m[32m	PASSED for resource: module.marketing-vm.yandex_compute_instance.vm[0]
+[0m[35m	File: /.external_modules/github.com/udjin10/yandex_compute_instance/4d05fab828b1fcae16556a4d167134efca2fccf2/main.tf:24-73
+[0m[35m	Calling File: /main.tf:8-32
+[0m[97mCheck: CKV_YC_4: "Ensure compute instance does not have serial console enabled."
+[0m[32m	PASSED for resource: module.marketing-vm.yandex_compute_instance.vm[0]
+[0m[35m	File: /.external_modules/github.com/udjin10/yandex_compute_instance/4d05fab828b1fcae16556a4d167134efca2fccf2/main.tf:24-73
+[0m[35m	Calling File: /main.tf:8-32
+[0m[97mCheck: CKV_YC_11: "Ensure security group is assigned to network interface."
+[0m[32m	PASSED for resource: module.marketing-vm.yandex_compute_instance.vm[0]
+[0m[35m	File: /.external_modules/github.com/udjin10/yandex_compute_instance/4d05fab828b1fcae16556a4d167134efca2fccf2/main.tf:24-73
+[0m[35m	Calling File: /main.tf:8-32
+[0m[97mCheck: CKV_TF_1: "Ensure Terraform module sources use a commit hash"
+[0m[32m	PASSED for resource: marketing-vm
+[0m[35m	File: /main.tf:8-32
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/supply-chain-policies/terraform-policies/ensure-terraform-module-sources-use-git-url-with-commit-hash-revision
+[0m[0m[97mCheck: CKV_TF_2: "Ensure Terraform module sources use a tag with a version number"
+[0m[32m	PASSED for resource: marketing-vm
+[0m[35m	File: /main.tf:8-32
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/supply-chain-policies/terraform-policies/ensure-terraform-module-sources-use-tag
+[0m[0m[97mCheck: CKV_TF_1: "Ensure Terraform module sources use a commit hash"
+[0m[32m	PASSED for resource: analystics-vm
+[0m[35m	File: /main.tf:34-58
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/supply-chain-policies/terraform-policies/ensure-terraform-module-sources-use-git-url-with-commit-hash-revision
+[0m[0m[97mCheck: CKV_TF_2: "Ensure Terraform module sources use a tag with a version number"
+[0m[32m	PASSED for resource: analystics-vm
+[0m[35m	File: /main.tf:34-58
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/supply-chain-policies/terraform-policies/ensure-terraform-module-sources-use-tag
+[0m[0m[97mCheck: CKV_YC_19: "Ensure security group does not contain allow-all rules."
+[0m[32m	PASSED for resource: yandex_vpc_security_group.example
+[0m[35m	File: /security.tf:58-86
+[0m[0m[0m[0m
+[0m[0m[0m[0m[0m

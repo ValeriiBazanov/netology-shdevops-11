@@ -1,0 +1,117 @@
+2024-11-07 18:49:09,042 [MainThread  ] [WARNI]  [ArmLocalGraph] created 0 vertices
+2024-11-07 18:49:09,042 [MainThread  ] [WARNI]  [ArmLocalGraph] created 0 edges
+
+
+       _               _              
+   ___| |__   ___  ___| | _______   __
+  / __| '_ \ / _ \/ __| |/ / _ \ \ / /
+ | (__| | | |  __/ (__|   < (_) \ V / 
+  \___|_| |_|\___|\___|_|\_\___/ \_/  
+                                      
+By Prisma Cloud | version: 3.2.278 
+Update available [30m3.2.278[0m -> [32m3.2.282[0m
+Run [35mpip3 install -U checkov[0m to update 
+
+[0m[0m[0m
+[0m[0m[0m[34mterraform scan results:
+[0m[36m
+Passed checks: 4, Failed checks: 6, Skipped checks: 0
+
+[0m[97mCheck: CKV_YC_4: "Ensure compute instance does not have serial console enabled."
+[0m[32m	PASSED for resource: module.analystics-vm.yandex_compute_instance.vm[0]
+[0m[35m	File: /.external_modules/github.com/udjin10/yandex_compute_instance/1.0.0/main.tf:24-73
+[0m[35m	Calling File: /main.tf:31-52
+[0m[97mCheck: CKV_YC_4: "Ensure compute instance does not have serial console enabled."
+[0m[32m	PASSED for resource: module.marketing-vm.yandex_compute_instance.vm[0]
+[0m[35m	File: /.external_modules/github.com/udjin10/yandex_compute_instance/1.0.0/main.tf:24-73
+[0m[35m	Calling File: /main.tf:8-29
+[0m[97mCheck: CKV_TF_2: "Ensure Terraform module sources use a tag with a version number"
+[0m[32m	PASSED for resource: marketing-vm
+[0m[35m	File: /main.tf:8-29
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/supply-chain-policies/terraform-policies/ensure-terraform-module-sources-use-tag
+[0m[0m[97mCheck: CKV_TF_2: "Ensure Terraform module sources use a tag with a version number"
+[0m[32m	PASSED for resource: analystics-vm
+[0m[35m	File: /main.tf:31-52
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/supply-chain-policies/terraform-policies/ensure-terraform-module-sources-use-tag
+[0m[0m[97mCheck: CKV_YC_2: "Ensure compute instance does not have public IP."
+[0m[31m	FAILED for resource: module.analystics-vm.yandex_compute_instance.vm[0]
+[0m[35m	File: /.external_modules/github.com/udjin10/yandex_compute_instance/1.0.0/main.tf:24-73
+[0m[35m	Calling File: /main.tf:31-52
+[0m
+		[33mCode lines for this resource are too many. Please use IDE of your choice to review the file.
+[97mCheck: CKV_YC_11: "Ensure security group is assigned to network interface."
+[0m[31m	FAILED for resource: module.analystics-vm.yandex_compute_instance.vm[0]
+[0m[35m	File: /.external_modules/github.com/udjin10/yandex_compute_instance/1.0.0/main.tf:24-73
+[0m[35m	Calling File: /main.tf:31-52
+[0m
+		[33mCode lines for this resource are too many. Please use IDE of your choice to review the file.
+[97mCheck: CKV_YC_2: "Ensure compute instance does not have public IP."
+[0m[31m	FAILED for resource: module.marketing-vm.yandex_compute_instance.vm[0]
+[0m[35m	File: /.external_modules/github.com/udjin10/yandex_compute_instance/1.0.0/main.tf:24-73
+[0m[35m	Calling File: /main.tf:8-29
+[0m
+		[33mCode lines for this resource are too many. Please use IDE of your choice to review the file.
+[97mCheck: CKV_YC_11: "Ensure security group is assigned to network interface."
+[0m[31m	FAILED for resource: module.marketing-vm.yandex_compute_instance.vm[0]
+[0m[35m	File: /.external_modules/github.com/udjin10/yandex_compute_instance/1.0.0/main.tf:24-73
+[0m[35m	Calling File: /main.tf:8-29
+[0m
+		[33mCode lines for this resource are too many. Please use IDE of your choice to review the file.
+[97mCheck: CKV_TF_1: "Ensure Terraform module sources use a commit hash"
+[0m[31m	FAILED for resource: marketing-vm
+[0m[35m	File: /main.tf:8-29
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/supply-chain-policies/terraform-policies/ensure-terraform-module-sources-use-git-url-with-commit-hash-revision
+[0m[0m
+		[37m8  | [33mmodule "marketing-vm" {
+		[37m9  | [33m  source         = "git::https://github.com/udjin10/yandex_compute_instance.git?ref=1.0.0"
+		[37m10 | [33m  env_name       = "marketing" 
+		[37m11 | [33m  network_id     = module.vpc_dev.network_id
+		[37m12 | [33m  subnet_zones   = [var.default_zone]
+		[37m13 | [33m  subnet_ids     = [module.vpc_dev.subnet_id]
+		[37m14 | [33m  instance_name  = "marketing"
+		[37m15 | [33m  instance_count = 1
+		[37m16 | [33m  image_family   = var.image
+		[37m17 | [33m  public_ip      = var.is_public_ip
+		[37m18 | [33m
+		[37m19 | [33m  labels = { 
+		[37m20 | [33m    owner= "v.bazanov",
+		[37m21 | [33m    project = "marketing"
+		[37m22 | [33m  }
+		[37m23 | [33m
+		[37m24 | [33m  metadata = {
+		[37m25 | [33m    user-data          = data.template_file.cloudinit.rendered
+		[37m26 | [33m    serial-port-enable = 1
+		[37m27 | [33m  }
+		[37m28 | [33m
+		[37m29 | [33m}
+
+[97mCheck: CKV_TF_1: "Ensure Terraform module sources use a commit hash"
+[0m[31m	FAILED for resource: analystics-vm
+[0m[35m	File: /main.tf:31-52
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/supply-chain-policies/terraform-policies/ensure-terraform-module-sources-use-git-url-with-commit-hash-revision
+[0m[0m
+		[37m31 | [33mmodule "analystics-vm" {
+		[37m32 | [33m  source         = "git::https://github.com/udjin10/yandex_compute_instance.git?ref=1.0.0"
+		[37m33 | [33m  env_name       = "analystics"
+		[37m34 | [33m  network_id     = module.vpc_dev.network_id
+		[37m35 | [33m  subnet_zones   = [var.default_zone]
+		[37m36 | [33m  subnet_ids     = [module.vpc_dev.subnet_id]
+		[37m37 | [33m  instance_name  = "analystics"
+		[37m38 | [33m  instance_count = 1
+		[37m39 | [33m  image_family   = var.image
+		[37m40 | [33m  public_ip      = var.is_public_ip
+		[37m41 | [33m
+		[37m42 | [33m  labels = { 
+		[37m43 | [33m    owner= "v.bazanov",
+		[37m44 | [33m    project = "analystics"
+		[37m45 | [33m  }
+		[37m46 | [33m
+		[37m47 | [33m  metadata = {
+		[37m48 | [33m    user-data          = data.template_file.cloudinit.rendered
+		[37m49 | [33m    serial-port-enable = 1
+		[37m50 | [33m  }
+		[37m51 | [33m
+		[37m52 | [33m}
+
+[0m[0m[0m
+[0m[0m[0m[0m[0m

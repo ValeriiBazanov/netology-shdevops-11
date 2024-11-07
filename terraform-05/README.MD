@@ -53,3 +53,16 @@ tfstate в бакете
 <image src="task-02-11.png">
 
 <image src="task-02-12.png">
+
+# Задание 3
+
+[tflint before](./tflint_before.log)
+
+[checkov before](./checkov_before.log)
+
+[checkov after](./checkov_after.log)
+
+[plan out](./plan_out.log)
+
+Ссылка на PR - https://github.com/ValeriiBazanov/netology-shdevops-11/pull/1/files#diff-51fd182e27ae78fc8e3adc0e9d56abdcce1be546187d410c1ac403a014fe7079
+

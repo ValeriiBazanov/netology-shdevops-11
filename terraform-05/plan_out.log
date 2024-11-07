@@ -1,0 +1,125 @@
+t1@t1-MEGABOOK-T1:~/learning/netology-shdevops-11/terraform-05/src$ terraform plan -out=plan.log
+data.template_file.cloudinit: Reading...
+data.template_file.cloudinit: Read complete after 0s [id=e766603ffbfef708811f0068e7fd84f28f2e1bf03e134ed962d848645c5a929b]
+module.analystics-vm.data.yandex_compute_image.my_image: Reading...
+module.marketing-vm.data.yandex_compute_image.my_image: Reading...
+module.vpc_dev.yandex_vpc_network.develop: Refreshing state... [id=enp0hg0u7n9j5rpq0nq7]
+module.vpc_dev.yandex_vpc_subnet.develop: Refreshing state... [id=e9bb8ckf8defl01vcn24]
+module.analystics-vm.data.yandex_compute_image.my_image: Read complete after 2s [id=fd8fo0f5geoe9hlkk3v0]
+module.marketing-vm.data.yandex_compute_image.my_image: Read complete after 2s [id=fd8fo0f5geoe9hlkk3v0]
+module.marketing-vm.yandex_compute_instance.vm[0]: Refreshing state... [id=fhm7uugfm152c27uh73n]
+module.analystics-vm.yandex_compute_instance.vm[0]: Refreshing state... [id=fhm4qusvo1arimofpmig]
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  + create
+  ~ update in-place
+
+Terraform will perform the following actions:
+
+  # yandex_vpc_security_group.example will be created
+  + resource "yandex_vpc_security_group" "example" {
+      + created_at = (known after apply)
+      + folder_id  = "b1gd0mqo6634epth4heq"
+      + id         = (known after apply)
+      + labels     = (known after apply)
+      + name       = "example_dynamic"
+      + network_id = "enp0hg0u7n9j5rpq0nq7"
+      + status     = (known after apply)
+
+      + egress {
+          + description       = "разрешить весь исходящий трафик"
+          + from_port         = 0
+          + id                = (known after apply)
+          + labels            = (known after apply)
+          + port              = -1
+          + protocol          = "TCP"
+          + to_port           = 65365
+          + v4_cidr_blocks    = [
+              + "0.0.0.0/0",
+            ]
+          + v6_cidr_blocks    = []
+            # (2 unchanged attributes hidden)
+        }
+
+      + ingress {
+          + description       = "разрешить входящий  http"
+          + from_port         = -1
+          + id                = (known after apply)
+          + labels            = (known after apply)
+          + port              = 80
+          + protocol          = "TCP"
+          + to_port           = -1
+          + v4_cidr_blocks    = [
+              + "0.0.0.0/0",
+            ]
+          + v6_cidr_blocks    = []
+            # (2 unchanged attributes hidden)
+        }
+      + ingress {
+          + description       = "разрешить входящий https"
+          + from_port         = -1
+          + id                = (known after apply)
+          + labels            = (known after apply)
+          + port              = 443
+          + protocol          = "TCP"
+          + to_port           = -1
+          + v4_cidr_blocks    = [
+              + "0.0.0.0/0",
+            ]
+          + v6_cidr_blocks    = []
+            # (2 unchanged attributes hidden)
+        }
+      + ingress {
+          + description       = "разрешить входящий ssh"
+          + from_port         = -1
+          + id                = (known after apply)
+          + labels            = (known after apply)
+          + port              = 22
+          + protocol          = "TCP"
+          + to_port           = -1
+          + v4_cidr_blocks    = [
+              + "0.0.0.0/0",
+            ]
+          + v6_cidr_blocks    = []
+            # (2 unchanged attributes hidden)
+        }
+    }
+
+  # module.analystics-vm.yandex_compute_instance.vm[0] will be updated in-place
+  ~ resource "yandex_compute_instance" "vm" {
+        id                        = "fhm4qusvo1arimofpmig"
+        name                      = "analystics-analystics-0"
+        # (15 unchanged attributes hidden)
+
+      ~ network_interface {
+          ~ nat                = true -> false
+          ~ security_group_ids = [] -> (known after apply)
+            # (9 unchanged attributes hidden)
+        }
+
+        # (5 unchanged blocks hidden)
+    }
+
+  # module.marketing-vm.yandex_compute_instance.vm[0] will be updated in-place
+  ~ resource "yandex_compute_instance" "vm" {
+        id                        = "fhm7uugfm152c27uh73n"
+        name                      = "marketing-marketing-0"
+        # (15 unchanged attributes hidden)
+
+      ~ network_interface {
+          ~ nat                = true -> false
+          ~ security_group_ids = [] -> (known after apply)
+            # (9 unchanged attributes hidden)
+        }
+
+        # (5 unchanged blocks hidden)
+    }
+
+Plan: 1 to add, 2 to change, 0 to destroy.
+
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+Saved the plan to: plan.log
+
+To perform exactly these actions, run the following command to apply:
+    terraform apply "plan.log"
