@@ -44,6 +44,6 @@ variable "image" {
 
 variable "is_public_ip" {
     type        = bool
-    default     = true
+    default     = false
     description = "Is public ip"
 }

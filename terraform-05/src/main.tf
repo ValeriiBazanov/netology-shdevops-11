@@ -1,13 +1,13 @@
 module "vpc_dev" {
-  source       = "./local_module_vpc"
-  vpc_name     = var.vpc_name
-  zone         = var.default_zone
-  cidr         = var.default_cidr
+  source   = "./local_module_vpc"
+  vpc_name = var.vpc_name
+  zone     = var.default_zone
+  cidr     = var.default_cidr
 }
 
 module "marketing-vm" {
-  source         = "git::https://github.com/udjin10/yandex_compute_instance.git?ref=0049a0c47c805c2552e16f7bca2581a7feae0f14"
-  env_name       = "marketing" 
+  source         = "git::https://github.com/udjin10/yandex_compute_instance.git?ref=4d05fab828b1fcae16556a4d167134efca2fccf2"
+  env_name       = "marketing"
   network_id     = module.vpc_dev.network_id
   subnet_zones   = [var.default_zone]
   subnet_ids     = [module.vpc_dev.subnet_id]
@@ -15,9 +15,12 @@ module "marketing-vm" {
   instance_count = 1
   image_family   = var.image
   public_ip      = var.is_public_ip
+  security_group_ids = [
+    yandex_vpc_security_group.example.id
+  ]
 
-  labels = { 
-    owner= "v.bazanov",
+  labels = {
+    owner   = "v.bazanov",
     project = "marketing"
   }
 
@@ -29,7 +32,7 @@ module "marketing-vm" {
 }
 
 module "analystics-vm" {
-  source         = "git::https://github.com/udjin10/yandex_compute_instance.git?ref=0049a0c47c805c2552e16f7bca2581a7feae0f14"
+  source         = "git::https://github.com/udjin10/yandex_compute_instance.git?ref=4d05fab828b1fcae16556a4d167134efca2fccf2"
   env_name       = "analystics"
   network_id     = module.vpc_dev.network_id
   subnet_zones   = [var.default_zone]
@@ -38,9 +41,12 @@ module "analystics-vm" {
   instance_count = 1
   image_family   = var.image
   public_ip      = var.is_public_ip
+  security_group_ids = [
+    yandex_vpc_security_group.example.id
+  ]
 
-  labels = { 
-    owner= "v.bazanov",
+  labels = {
+    owner   = "v.bazanov",
     project = "analystics"
   }
 
@@ -53,5 +59,5 @@ module "analystics-vm" {
 
 data "template_file" "cloudinit" {
   template = file("./cloud-init.yml")
-  vars = {public_key = var.public_key}
+  vars     = { public_key = var.public_key }
 }
