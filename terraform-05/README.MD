@@ -66,3 +66,14 @@ tfstate в бакете
 
 Ссылка на PR - https://github.com/ValeriiBazanov/netology-shdevops-11/pull/1/files#diff-51fd182e27ae78fc8e3adc0e9d56abdcce1be546187d410c1ac403a014fe7079
 
+# Задание 4
+
+[Ссылка на описание переменных](./src/variables_test.tf)
+
+<image src="task-04-1.png">
+
+<image src="task-04-2.png">
+
+<image src="task-04-3.png">
+
+<image src="task-04-4.png">
