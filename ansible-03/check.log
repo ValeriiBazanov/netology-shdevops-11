@@ -1,0 +1,21 @@
+
+PLAY [Install Clickhouse] ******************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [clickhouse-1]
+
+TASK [Get clickhouse distrib] **************************************************
+changed: [clickhouse-1] => (item=clickhouse-client)
+changed: [clickhouse-1] => (item=clickhouse-server)
+failed: [clickhouse-1] (item=clickhouse-common-static) => {"ansible_loop_var": "item", "changed": false, "dest": "./clickhouse-common-static-22.3.3.44.rpm", "elapsed": 0, "item": "clickhouse-common-static", "msg": "Request failed", "response": "HTTP Error 404: Not Found", "status_code": 404, "url": "https://packages.clickhouse.com/rpm/stable/clickhouse-common-static-22.3.3.44.noarch.rpm"}
+
+TASK [Get clickhouse distrib] **************************************************
+changed: [clickhouse-1]
+
+TASK [Install clickhouse packages] *********************************************
+An exception occurred during task execution. To see the full traceback, use -vvv. The error was: OSError: Could not open: clickhouse-common-static-22.3.3.44.rpm clickhouse-client-22.3.3.44.rpm clickhouse-server-22.3.3.44.rpm
+fatal: [clickhouse-1]: FAILED! => {"changed": false, "module_stderr": "Shared connection to 84.201.175.105 closed.\r\n", "module_stdout": "Traceback (most recent call last):\r\n  File \"/home/admin/.ansible/tmp/ansible-tmp-1731526913.4004216-42057-3383312710559/AnsiballZ_dnf.py\", line 107, in <module>\r\n    _ansiballz_main()\r\n  File \"/home/admin/.ansible/tmp/ansible-tmp-1731526913.4004216-42057-3383312710559/AnsiballZ_dnf.py\", line 99, in _ansiballz_main\r\n    invoke_module(zipped_mod, temp_path, ANSIBALLZ_PARAMS)\r\n  File \"/home/admin/.ansible/tmp/ansible-tmp-1731526913.4004216-42057-3383312710559/AnsiballZ_dnf.py\", line 47, in invoke_module\r\n    runpy.run_module(mod_name='ansible.modules.dnf', init_globals=dict(_module_fqn='ansible.modules.dnf', _modlib_path=modlib_path),\r\n  File \"/usr/lib64/python3.9/runpy.py\", line 225, in run_module\r\n    return _run_module_code(code, init_globals, run_name, mod_spec)\r\n  File \"/usr/lib64/python3.9/runpy.py\", line 97, in _run_module_code\r\n    _run_code(code, mod_globals, init_globals,\r\n  File \"/usr/lib64/python3.9/runpy.py\", line 87, in _run_code\r\n    exec(code, run_globals)\r\n  File \"/tmp/ansible_ansible.legacy.dnf_payload_n3inl1ie/ansible_ansible.legacy.dnf_payload.zip/ansible/modules/dnf.py\", line 1374, in <module>\r\n  File \"/tmp/ansible_ansible.legacy.dnf_payload_n3inl1ie/ansible_ansible.legacy.dnf_payload.zip/ansible/modules/dnf.py\", line 1363, in main\r\n  File \"/tmp/ansible_ansible.legacy.dnf_payload_n3inl1ie/ansible_ansible.legacy.dnf_payload.zip/ansible/modules/dnf.py\", line 1338, in run\r\n  File \"/tmp/ansible_ansible.legacy.dnf_payload_n3inl1ie/ansible_ansible.legacy.dnf_payload.zip/ansible/modules/dnf.py\", line 990, in ensure\r\n  File \"/tmp/ansible_ansible.legacy.dnf_payload_n3inl1ie/ansible_ansible.legacy.dnf_payload.zip/ansible/modules/dnf.py\", line 890, in _install_remote_rpms\r\n  File \"/usr/lib/python3.9/site-packages/dnf/base.py\", line 1343, in add_remote_rpms\r\n    raise IOError(_(\"Could not open: {}\").format(' '.join(pkgs_error)))\r\nOSError: Could not open: clickhouse-common-static-22.3.3.44.rpm clickhouse-client-22.3.3.44.rpm clickhouse-server-22.3.3.44.rpm\r\n", "msg": "MODULE FAILURE\nSee stdout/stderr for the exact error", "rc": 1}
+
+PLAY RECAP *********************************************************************
+clickhouse-1               : ok=2    changed=1    unreachable=0    failed=1    skipped=0    rescued=1    ignored=0   
+
