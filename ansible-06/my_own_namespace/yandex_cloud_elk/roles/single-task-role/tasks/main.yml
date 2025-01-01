@@ -1,0 +1,10 @@
+#SPDX-License-Identifier: MIT-0
+---
+- name: run module
+  my_own_module:
+    path: "{{ path }}"
+    content: "{{ content }}"
+  register: testout
+- name: dump test output
+  debug:
+    msg: '{{ testout }}'
