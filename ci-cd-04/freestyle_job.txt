@@ -1,0 +1,21 @@
+if [ -d "ansible-clickhouse" ]; then
+  echo "Directory ansible-clickhouse exists. Performing git pull..."
+  cd ansible-clickhouse
+  git pull
+else
+  echo "Directory ansible-clickhouse does not exist. Cloning the repository..."
+  git clone https://github.com/ValeriiBazanov/ansible-clickhouse.git
+  cd ansible-clickhouse
+fi
+echo "Current directory: $(pwd)"
+python3 -m venv my_env
+source my_env/bin/activate
+python3 -m pip install wheel
+python3 -m pip install molecule docker
+if [ ! -d "molecule/default" ]; then
+  echo "Initializing new Molecule scenario..."
+  molecule init scenario default
+else
+  echo "Molecule scenario directory already exists. Skipping initialization."
+fi
+molecule test
