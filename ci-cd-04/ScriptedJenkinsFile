@@ -1,0 +1,30 @@
+node("linux"){
+    stage("Git checkout"){
+        if (fileExists("example-playbook")) {
+            echo "Directory example-playbook exists. Performing git pull..."
+            dir("example-playbook") {
+                sh 'git pull'
+            }
+        } else {
+            echo "Directory example-playbook does not exist. Cloning the repository..."
+            sh 'git clone https://github.com/aragastmatb/example-playbook.git'
+        }
+    }
+    stage("Sample define secret_check"){
+        secret_check=true
+    }
+    stage("Run playbook"){
+        if (secret_check){
+                dir("example-playbook") {
+                    if (params.prod_run) {
+                        sh 'ansible-playbook site.yml -i inventory/prod.yml'
+                    } else {
+                        sh 'ansible-playbook site.yml -i inventory/prod.yml --check --diff'
+                    }
+                }
+           } else {
+               echo 'need more action'
+           }
+        
+    }
+}

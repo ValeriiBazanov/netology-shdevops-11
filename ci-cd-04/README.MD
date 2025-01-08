@@ -21,3 +21,17 @@
 <image src="multibranch.png">
 
 Ссылка на Jenkinsfile - https://github.com/ValeriiBazanov/ansible-clickhouse/blob/master/Jenkinsfile
+
+# Scripted Pipeline
+
+Настройка
+
+<image src="scripted_setup_1.png">
+
+<image src="scripted_setup_2.png">
+
+[Скрипт](./ScriptedJenkinsFile)
+
+Выполнение
+
+<image src="scripted_run.png">
