@@ -1,4 +1,4 @@
- Отредактированный файл [python-api.py](./python-api.py)
+Отредактированный файл [python-api.py](./python-api.py)
 
 [Dockerfile](./Dockerfile)
 
