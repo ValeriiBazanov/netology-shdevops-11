@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: log-writer
+  labels:
+    app: log-writer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: log-writer
+  template:
+    metadata:
+      labels:
+        app: log-writer
+    spec:
+      containers:
+
+      - name: busybox
+        image: busybox
+        command: ['sh', '-c', "while true; do echo \"$(date +'%T %F')\" >> /output/output.txt; sleep 5; done"]
+        volumeMounts:
+        - name: volume-pvc
+          mountPath: /output
+
+      - name: multitool
+        image: wbitt/network-multitool
+        ports:
+        - containerPort: 8080
+        env:
+        - name: HTTP_PORT
+          value: "8080"
+        volumeMounts:
+        - name: volume-pvc
+          mountPath: /input
+
+      volumes:
+      - name: volume-pvc
+        persistentVolumeClaim:
+          claimName: pvc-1
