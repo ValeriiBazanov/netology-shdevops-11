@@ -5,9 +5,9 @@
 sudo apt update
 sudo apt install snapd
 sudo snap install microk8s --classic
-sudo usermod -a -G microk8s admin
-sudo chown -f -R admin ~/.kube
-newgr microk8s
+sudo usermod -a -G microk8s ubuntu
+sudo chown -f -R ubuntu ~/.kube
+newgrp microk8s
 ```
 <image src="task-1-1.png">
 

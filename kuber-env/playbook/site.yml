@@ -1,0 +1,22 @@
+---
+- name: Prepare env
+  hosts: kuber
+  remote_user: ubuntu
+  gather_facts: false
+  become: true
+  tasks:
+    - name: Apt update
+      apt:
+        update_cache: true
+        force_apt_get: yes
+    - name: Apt upgrade
+      apt:
+        upgrade: yes
+        force_apt_get: yes
+    - name: Install snapd
+      apt:
+        name: snapd
+        update_cache: true
+    - name: Install microk8s
+      shell: snap install microk8s --classic
+

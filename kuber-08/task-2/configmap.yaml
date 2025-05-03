@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-env-config
+data:
+  index.html: |
+    <html>
+    <body>
+      <h1>header</h1>
+      <p>Netology, kubernetes 2.3 task 2 with https</p>
+    </body>
+    </html>
