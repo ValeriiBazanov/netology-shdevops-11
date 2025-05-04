@@ -19,4 +19,20 @@
         update_cache: true
     - name: Install microk8s
       shell: snap install microk8s --classic
+    - name: usermod microk8s
+      shell: usermod -a -G microk8s ubuntu
+    - name: Change ownership of .kube directory to user 'ubuntu'
+      file:
+        path: "{{ lookup('env', 'HOME') + '/.kube' }}"
+        owner: ubuntu
+        group: ubuntu
+        recurse: yes
+        
+# newgrp microk8s
+# microk8s status --wait-ready
+# microk8s enable dashboard
+# microk8s enable ingress
+# nano /var/snap/microk8s/current/certs/csr.conf.template
+# sudo microk8s refresh-certs --cert front-proxy-client.crt
+# microk8s config
 
