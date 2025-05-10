@@ -1,0 +1,12 @@
+all:
+  hosts:
+
+%{~ for i in master ~}
+    ${i["name"]}: ssh -l ubuntu ${i["network_interface"][0]["nat_ip_address"]}
+
+%{~ endfor ~}
+
+%{~ for i in worker ~}
+    ${i["name"]}: ssh -l ubuntu ${i["network_interface"][0]["nat_ip_address"]}
+
+%{~ endfor ~}
