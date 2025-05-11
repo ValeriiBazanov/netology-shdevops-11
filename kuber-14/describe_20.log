@@ -1,0 +1,56 @@
+Name:                   nginx
+Namespace:              default
+CreationTimestamp:      Sun, 11 May 2025 13:34:01 +0300
+Labels:                 app=main
+Annotations:            deployment.kubernetes.io/revision: 2
+Selector:               app=main
+Replicas:               5 desired | 5 updated | 5 total | 5 available | 0 unavailable
+StrategyType:           RollingUpdate
+MinReadySeconds:        0
+RollingUpdateStrategy:  1 max unavailable, 1 max surge
+Pod Template:
+  Labels:  app=main
+  Containers:
+   nginx:
+    Image:        nginx:1.20
+    Port:         80/TCP
+    Host Port:    0/TCP
+    Environment:  <none>
+    Mounts:       <none>
+   network-multitool:
+    Image:       wbitt/network-multitool
+    Ports:       8080/TCP, 11443/TCP
+    Host Ports:  0/TCP, 0/TCP
+    Limits:
+      cpu:     10m
+      memory:  20Mi
+    Requests:
+      cpu:     1m
+      memory:  20Mi
+    Environment:
+      HTTP_PORT:   8080
+      HTTPS_PORT:  11443
+    Mounts:        <none>
+  Volumes:         <none>
+  Node-Selectors:  <none>
+  Tolerations:     <none>
+Conditions:
+  Type           Status  Reason
+  ----           ------  ------
+  Available      True    MinimumReplicasAvailable
+  Progressing    True    NewReplicaSetAvailable
+OldReplicaSets:  nginx-7cf7c7c86b (0/0 replicas created)
+NewReplicaSet:   nginx-7cd4959b46 (5/5 replicas created)
+Events:
+  Type    Reason             Age                From                   Message
+  ----    ------             ----               ----                   -------
+  Normal  ScalingReplicaSet  2m50s              deployment-controller  Scaled up replica set nginx-7cf7c7c86b from 0 to 5
+  Normal  ScalingReplicaSet  84s                deployment-controller  Scaled up replica set nginx-7cd4959b46 from 0 to 1
+  Normal  ScalingReplicaSet  84s                deployment-controller  Scaled down replica set nginx-7cf7c7c86b from 5 to 4
+  Normal  ScalingReplicaSet  83s                deployment-controller  Scaled up replica set nginx-7cd4959b46 from 1 to 2
+  Normal  ScalingReplicaSet  73s                deployment-controller  Scaled down replica set nginx-7cf7c7c86b from 4 to 3
+  Normal  ScalingReplicaSet  73s                deployment-controller  Scaled up replica set nginx-7cd4959b46 from 2 to 3
+  Normal  ScalingReplicaSet  73s                deployment-controller  Scaled down replica set nginx-7cf7c7c86b from 3 to 2
+  Normal  ScalingReplicaSet  71s                deployment-controller  Scaled up replica set nginx-7cd4959b46 from 3 to 4
+  Normal  ScalingReplicaSet  68s                deployment-controller  Scaled down replica set nginx-7cf7c7c86b from 2 to 1
+  Normal  ScalingReplicaSet  68s (x2 over 68s)  deployment-controller  (combined from similar events): Scaled down replica set nginx-7cf7c7c86b from 1 to 0
